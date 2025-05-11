@@ -35,3 +35,8 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# Personal config files
+# I should add the EC2 key and AWS Credentials, but i might need them at school or something
+# *.pem
+.aws/credentials

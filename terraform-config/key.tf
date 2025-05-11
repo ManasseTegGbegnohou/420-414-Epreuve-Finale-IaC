@@ -6,7 +6,6 @@ resource "aws_key_pair" "tp_3_final_2271627key" {
 resource "tls_private_key" "rsa" {
   algorithm = "RSA"
   rsa_bits  = 4096
-
 }
 
 resource "local_file" "cluster_keypair" {

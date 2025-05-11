@@ -1,5 +1,5 @@
 # Local .terraform directories
-.terraform/
+*.terraform
 
 # .tfstate files
 *.tfstate
@@ -39,4 +39,4 @@ terraform.rc
 # Personal config files
 # I should add the EC2 key and AWS Credentials, but i might need them at school or something
 # *.pem
-.aws/credentials
+*.aws

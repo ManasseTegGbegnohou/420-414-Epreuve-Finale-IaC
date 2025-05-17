@@ -1,11 +1,9 @@
 #!/bin/bash
 
 sudo apt update
-
 sudo apt install nginx -y
 
 sudo systemctl enable nginx
-
 sudo systemctl start nginx
 
 # Install Docker From Docker's Online Documentation

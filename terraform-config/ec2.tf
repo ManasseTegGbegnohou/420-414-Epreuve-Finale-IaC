@@ -7,7 +7,7 @@ variable "ami_id" {
 variable "instance_type" {
   type        = string
   description = "EC2 instance Type"
-  default     = "t2.micro"
+  default     = "t2.large"
 }
 
 resource "aws_instance" "multi_service_infrastructure" {

@@ -1,20 +1,28 @@
 resource "aws_security_group" "tp_3_final_2271627_sg" {
   name        = "ssh-access"
-  description = "Allow SSH and HTTP traffic"
+  description = "Allow SSH, HTTP, HTTPS traffic"
   vpc_id      = aws_vpc.tp_3_final_2271627_vpc.id
 
   ingress {
     description = "SSH"
-    from_port   = 22
-    to_port     = 22
+    from_port   = 0
+    to_port     = 0
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
     description = "HTTP"
-    from_port   = 80
-    to_port     = 80
+    from_port   = 0
+    to_port     = 0
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    description = "HTTPS"
+    from_port   = 0
+    to_port     = 0
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

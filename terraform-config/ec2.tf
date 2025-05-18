@@ -18,8 +18,14 @@ resource "aws_instance" "multi_service_infrastructure" {
   vpc_security_group_ids      = [aws_security_group.tp_3_final_2271627_sg.id]
   key_name                    = aws_key_pair.tp_3_final_2271627key.key_name
 
+  root_block_device {
+    volume_size = 64
+    volume_type = "gp3"
+  }
+
   tags = {
-    Name = "TP-3-FINAL-2271627-MULTI-SERVICE"
+    Name        = "TP-3-FINAL-2271627-MULTI-SERVICE"
+    volume_size = 64
   }
 
   user_data = file("${path.module}/user-data.sh")

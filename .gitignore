@@ -38,4 +38,6 @@ terraform.rc
 
 # Personal config files
 # I should add the EC2, but i might need them at school or something
-# *.pem
+*.pem
+
+keyperm.txt

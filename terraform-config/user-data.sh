@@ -42,5 +42,5 @@ echo "Starting Dockers..."
 sudo docker compose down
 sleep 3
 sudo docker system prune -a --volumes -f
-sleep 15
+sleep 12
 sudo docker compose up -d

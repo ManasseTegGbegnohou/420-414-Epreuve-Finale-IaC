@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt update
-sleep 3
+sleep 1
 sudo apt install nginx -y
 sudo systemctl enable nginx
 sleep 3
@@ -35,9 +35,12 @@ sleep 3
 # Clone repo
 echo "Cloning Repo..."
 git clone https://github.com/ManasseTegGbegnohou/420-414-Epreuve-Finale-Services.git
-sleep 2
 cd 420-414-Epreuve-Finale-Services/
 
 # Start all images
 echo "Starting Dockers..."
+sudo docker compose down
+sleep 3
+sudo docker system prune -a --volumes -f
+sleep 15
 sudo docker compose up -d

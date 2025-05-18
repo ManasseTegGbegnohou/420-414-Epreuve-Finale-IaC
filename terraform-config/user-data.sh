@@ -1,11 +1,12 @@
 #!/bin/bash
 
 sudo apt update
-sleep 1
+sleep 5
 sudo apt install nginx -y
 sudo systemctl enable nginx
-sleep 3
-# Kill Ngnix from runing on port:80 (Im too lazy to rebuild frontend docker)
+sleep 5
+
+# Kill Ngnix from runing on port:80 (I'm too lazy to rebuild frontend docker):
 sudo systemctl stop nginx
 
 # Install Docker From Docker's Online Documentation
@@ -16,7 +17,7 @@ sudo apt-get -y install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
-sleep 3
+sleep 5
 
 # Add the repository to Apt sources:
 echo \
@@ -26,21 +27,25 @@ echo \
 sudo apt-get update
 
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin 
-sleep 3
+sleep 5
 
-# Enable and start Docker service
+# Enable and start Docker service:
 sudo systemctl enable docker
 sudo systemctl start docker
 sleep 3
-# Clone repo
+
+# Clone services repo:
 echo "Cloning Repo..."
 git clone https://github.com/ManasseTegGbegnohou/420-414-Epreuve-Finale-Services.git
 cd 420-414-Epreuve-Finale-Services/
 
-# Start all images
+# Start all Docker Images:
 echo "Starting Dockers..."
 sudo docker compose down
-sleep 3
+sleep 5
 sudo docker system prune -a --volumes -f
-sleep 12
+sleep 15
 sudo docker compose up -d
+
+# See what's up with Traefik if Services not running:
+# docker logs traefik

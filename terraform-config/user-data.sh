@@ -29,17 +29,26 @@ sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin 
 sleep 5
 
-# Enable and start Docker service:
+# Enable and start Docker service
 sudo systemctl enable docker
 sudo systemctl start docker
 sleep 3
 
-# Clone services repo:
+# DuckDNS Domain Ip Update:
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/working-with-ip-addresses.html
+TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+MY_PUBLIC_IP=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/local-ipv4)
+
+# Domain Ip Update
+echo url="https://www.duckdns.org/update?domains=manac&token=8fc8cc1b-883c-420e-91a2-cc4d7f1f4f63&ip=$MY_PUBLIC_IP" | curl -k -K -
+sleep 3
+
+# Clone services repo
 echo "Cloning Repo..."
 git clone https://github.com/ManasseTegGbegnohou/420-414-Epreuve-Finale-Services.git
 cd 420-414-Epreuve-Finale-Services/
 
-# Start all Docker Images:
+# Start all Docker Images
 echo "Starting Dockers..."
 sudo docker compose down
 sleep 5
@@ -47,5 +56,5 @@ sudo docker system prune -a --volumes -f
 sleep 15
 sudo docker compose up -d
 
-# See what's up with Traefik if Services not running:
+# See what's up with Traefik if Services not running
 # docker logs traefik

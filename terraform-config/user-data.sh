@@ -1,14 +1,5 @@
 #!/bin/bash
 
-sudo apt update
-sleep 5
-sudo apt install nginx -y
-sudo systemctl enable nginx
-sleep 5
-
-# Kill Ngnix from runing on port:80 (I'm too lazy to rebuild frontend docker):
-sudo systemctl stop nginx
-
 # Install Docker From Docker's Online Documentation
 # Add Docker's official GPG key:
 echo "Installing Docker..."
